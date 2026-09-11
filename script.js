@@ -33,10 +33,6 @@ const segundosElemento =
 console.log("🔵 PASSO 2 — Elementos procurados.");
 
 
-// ==========================================
-// VERIFICAR ELEMENTOS
-// ==========================================
-
 if (
     contadorAniversario &&
     diasElemento &&
@@ -45,26 +41,58 @@ if (
     segundosElemento
 ) {
 
-    console.log(
-        "🟢 PASSO 3 — TODOS os elementos encontrados."
-    );
+    console.log("🟢 PASSO 3 — Elementos encontrados.");
 
-    if (estadoDiagnostico) {
-        estadoDiagnostico.innerHTML +=
-            "<br>🟢 PASSO 3 — Elementos encontrados.";
-    }
+    estadoDiagnostico.innerHTML +=
+        "<br>🟢 PASSO 3 — Elementos encontrados.";
 
 
     // ======================================
-    // CONFIGURAÇÃO ORIGINAL
+    // TESTE 4A
     // ======================================
+
+    console.log("🔵 TESTE 4A — Antes do MODO_TESTE.");
+
+    estadoDiagnostico.innerHTML +=
+        "<br>🔵 TESTE 4A — Antes do MODO_TESTE.";
+
 
     const MODO_TESTE = true;
+
+
+    console.log("🟢 TESTE 4A — MODO_TESTE criado.");
+
+    estadoDiagnostico.innerHTML +=
+        "<br>🟢 TESTE 4A — MODO_TESTE criado.";
+
+
+    // ======================================
+    // TESTE 4B
+    // ======================================
+
+    console.log("🔵 TESTE 4B — Antes da duração.");
+
+    estadoDiagnostico.innerHTML +=
+        "<br>🔵 TESTE 4B — Antes da duração.";
+
+
     const DURACAO_TESTE = 5;
 
-    console.log(
-        "🟢 PASSO 4 — Configuração criada."
-    );
+
+    console.log("🟢 TESTE 4B — DURACAO_TESTE criada.");
+
+    estadoDiagnostico.innerHTML +=
+        "<br>🟢 TESTE 4B — DURACAO_TESTE criada.";
+
+
+    // ======================================
+    // TESTE 4C
+    // ======================================
+
+    console.log("🔵 TESTE 4C — Antes da data.");
+
+    estadoDiagnostico.innerHTML +=
+        "<br>🔵 TESTE 4C — Antes da data.";
 
 
     const DATA_ANIVERSARIO =
@@ -73,24 +101,58 @@ if (
         );
 
 
+    console.log(
+        "🟢 TESTE 4C — DATA_ANIVERSARIO criada."
+    );
+
+    estadoDiagnostico.innerHTML +=
+        "<br>🟢 TESTE 4C — DATA_ANIVERSARIO criada.";
+
+
+    // ======================================
+    // TESTE 4D
+    // ======================================
+
+    console.log("🔵 TESTE 4D — Antes do Date.now.");
+
+    estadoDiagnostico.innerHTML +=
+        "<br>🔵 TESTE 4D — Antes do Date.now.";
+
+
+    const AGORA = Date.now();
+
+
+    console.log(
+        "🟢 TESTE 4D — Date.now funcionou:",
+        AGORA
+    );
+
+    estadoDiagnostico.innerHTML +=
+        "<br>🟢 TESTE 4D — Date.now funcionou.";
+
+
+    // ======================================
+    // TESTE 4E
+    // ======================================
+
+    console.log(
+        "🔵 TESTE 4E — Antes de calcular momentoFinal."
+    );
+
+    estadoDiagnostico.innerHTML +=
+        "<br>🔵 TESTE 4E — Antes de calcular momentoFinal.";
+
+
     let momentoFinal;
 
 
     if (MODO_TESTE) {
 
-        console.log(
-            "🟢 PASSO 5 — MODO TESTE ativado."
-        );
-
         momentoFinal =
-            Date.now() +
+            AGORA +
             DURACAO_TESTE * 1000;
 
     } else {
-
-        console.log(
-            "🟢 PASSO 5 — MODO REAL ativado."
-        );
 
         momentoFinal =
             DATA_ANIVERSARIO.getTime();
@@ -99,185 +161,34 @@ if (
 
 
     console.log(
-        "momentoFinal:",
+        "🟢 TESTE 4E — momentoFinal criado:",
         momentoFinal
     );
 
+    estadoDiagnostico.innerHTML +=
+        "<br>🟢 TESTE 4E — momentoFinal criado.";
+
 
     // ======================================
-    // FUNÇÃO DE FORMATAÇÃO
+    // TESTE 5
     // ======================================
-
-    function formatarNumero(numero) {
-
-        return String(numero).padStart(
-            2,
-            "0"
-        );
-
-    }
-
 
     console.log(
-        "🟢 PASSO 6 — formatarNumero criada."
+        "🟢 PASSO 5 — Configuração completa."
     );
 
+    estadoDiagnostico.innerHTML +=
+        "<br>🟢 PASSO 5 — Configuração completa.";
 
-    // ======================================
-    // FUNÇÃO DO CONTADOR
-    // ======================================
-
-    function actualizarContador() {
-
-        console.log(
-            "🔄 actualizarContador executou."
-        );
-
-
-        const agora = Date.now();
-
-        const diferenca =
-            momentoFinal - agora;
-
-
-        console.log(
-            "Diferença:",
-            diferenca
-        );
-
-
-        if (diferenca <= 0) {
-
-            console.log(
-                "🔴 DIFERENÇA <= 0"
-            );
-
-            diasElemento.textContent = "00";
-
-            horasElemento.textContent = "00";
-
-            minutosElemento.textContent = "00";
-
-            segundosElemento.textContent = "00";
-
-            return;
-        }
-
-
-        const totalSegundos =
-            Math.floor(
-                diferenca / 1000
-            );
-
-
-        console.log(
-            "🟢 Segundos restantes:",
-            totalSegundos
-        );
-
-
-        const dias =
-            Math.floor(
-                totalSegundos /
-                (60 * 60 * 24)
-            );
-
-
-        const horas =
-            Math.floor(
-                (
-                    totalSegundos %
-                    (60 * 60 * 24)
-                ) /
-                (60 * 60)
-            );
-
-
-        const minutos =
-            Math.floor(
-                (
-                    totalSegundos %
-                    (60 * 60)
-                ) /
-                60
-            );
-
-
-        const segundos =
-            totalSegundos %
-            60;
-
-
-        diasElemento.textContent =
-            formatarNumero(dias);
-
-        horasElemento.textContent =
-            formatarNumero(horas);
-
-        minutosElemento.textContent =
-            formatarNumero(minutos);
-
-        segundosElemento.textContent =
-            formatarNumero(segundos);
-
-
-        console.log(
-            "🟢 DOM atualizado."
-        );
-    }
-
-
-    console.log(
-        "🟢 PASSO 7 — Função do contador criada."
-    );
-
-
-    // ======================================
-    // PRIMEIRA EXECUÇÃO
-    // ======================================
-
-    actualizarContador();
-
-
-    console.log(
-        "🟢 PASSO 8 — Primeira execução concluída."
-    );
-
-
-    // ======================================
-    // INTERVALO
-    // ======================================
-
-    setInterval(
-        actualizarContador,
-        1000
-    );
-
-
-    console.log(
-        "🟢 PASSO 9 — setInterval criado."
-    );
-
-
-    if (estadoDiagnostico) {
-
-        estadoDiagnostico.innerHTML +=
-            "<br>🟢 PASSO 9 — Contador iniciado.";
-
-    }
 
 } else {
 
     console.log(
-        "🔴 PASSO 3 — ALGUM ELEMENTO NÃO FOI ENCONTRADO."
+        "🔴 PASSO 3 — Algum elemento não encontrado."
     );
 
-    if (estadoDiagnostico) {
-
-        estadoDiagnostico.innerHTML +=
-            "<br>🔴 PASSO 3 — Algum elemento não foi encontrado.";
-
-    }
+    estadoDiagnostico.innerHTML +=
+        "<br>🔴 PASSO 3 — Algum elemento não encontrado.";
 
 }
 
