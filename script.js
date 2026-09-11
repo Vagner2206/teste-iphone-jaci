@@ -1,57 +1,41 @@
 
-// ==========================================
-// TESTE B
-// CONTADOR ORIGINAL DO SITE
-// ==========================================
-
-
-// ------------------------------------------
-// DIAGNÓSTICO INICIAL
-// ------------------------------------------
+console.log("🔵 PASSO 1 — JavaScript começou.");
 
 const estadoDiagnostico =
     document.querySelector("#estado");
 
 if (estadoDiagnostico) {
     estadoDiagnostico.innerHTML =
-        '<span class="ok">🟢 JavaScript carregado.</span>';
+        "🟢 PASSO 1 — JavaScript carregado.";
 }
 
 
-// ------------------------------------------
-// CÓDIGO ORIGINAL DO CONTADOR
-// ------------------------------------------
-
-const MODO_TESTE = true;
-const DURACAO_TESTE = 5;
-
-const DATA_ANIVERSARIO =
-    new Date(
-        "2026-10-02T00:00:00"
-    );
-
+// ==========================================
+// ELEMENTOS
+// ==========================================
 
 const contadorAniversario =
-    document.querySelector(
-        "#contadorAniversario"
-    );
-
+    document.querySelector("#contadorAniversario");
 
 const diasElemento =
     document.querySelector("#dias");
 
-
 const horasElemento =
     document.querySelector("#horas");
-
 
 const minutosElemento =
     document.querySelector("#minutos");
 
-
 const segundosElemento =
     document.querySelector("#segundos");
 
+
+console.log("🔵 PASSO 2 — Elementos procurados.");
+
+
+// ==========================================
+// VERIFICAR ELEMENTOS
+// ==========================================
 
 if (
     contadorAniversario &&
@@ -61,11 +45,42 @@ if (
     segundosElemento
 ) {
 
+    console.log(
+        "🟢 PASSO 3 — TODOS os elementos encontrados."
+    );
+
+    if (estadoDiagnostico) {
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 PASSO 3 — Elementos encontrados.";
+    }
+
+
+    // ======================================
+    // CONFIGURAÇÃO ORIGINAL
+    // ======================================
+
+    const MODO_TESTE = true;
+    const DURACAO_TESTE = 5;
+
+    console.log(
+        "🟢 PASSO 4 — Configuração criada."
+    );
+
+
+    const DATA_ANIVERSARIO =
+        new Date(
+            "2026-10-02T00:00:00"
+        );
+
+
     let momentoFinal;
-    let contadorIntervalo = null;
 
 
     if (MODO_TESTE) {
+
+        console.log(
+            "🟢 PASSO 5 — MODO TESTE ativado."
+        );
 
         momentoFinal =
             Date.now() +
@@ -73,11 +88,25 @@ if (
 
     } else {
 
+        console.log(
+            "🟢 PASSO 5 — MODO REAL ativado."
+        );
+
         momentoFinal =
             DATA_ANIVERSARIO.getTime();
 
     }
 
+
+    console.log(
+        "momentoFinal:",
+        momentoFinal
+    );
+
+
+    // ======================================
+    // FUNÇÃO DE FORMATAÇÃO
+    // ======================================
 
     function formatarNumero(numero) {
 
@@ -89,22 +118,21 @@ if (
     }
 
 
-    function desbloquearSite() {
+    console.log(
+        "🟢 PASSO 6 — formatarNumero criada."
+    );
 
-        contadorAniversario.classList.add(
-            "liberado"
-        );
 
-        document.body.style.overflow = "";
-
-        console.log(
-            "🎉 Contador terminou! Site desbloqueado."
-        );
-
-    }
-
+    // ======================================
+    // FUNÇÃO DO CONTADOR
+    // ======================================
 
     function actualizarContador() {
+
+        console.log(
+            "🔄 actualizarContador executou."
+        );
+
 
         const agora = Date.now();
 
@@ -112,7 +140,17 @@ if (
             momentoFinal - agora;
 
 
+        console.log(
+            "Diferença:",
+            diferenca
+        );
+
+
         if (diferenca <= 0) {
+
+            console.log(
+                "🔴 DIFERENÇA <= 0"
+            );
 
             diasElemento.textContent = "00";
 
@@ -122,22 +160,7 @@ if (
 
             segundosElemento.textContent = "00";
 
-
-            if (contadorIntervalo) {
-
-                clearInterval(
-                    contadorIntervalo
-                );
-
-                contadorIntervalo = null;
-
-            }
-
-
-            desbloquearSite();
-
             return;
-
         }
 
 
@@ -145,6 +168,12 @@ if (
             Math.floor(
                 diferenca / 1000
             );
+
+
+        console.log(
+            "🟢 Segundos restantes:",
+            totalSegundos
+        );
 
 
         const dias =
@@ -182,86 +211,71 @@ if (
         diasElemento.textContent =
             formatarNumero(dias);
 
-
         horasElemento.textContent =
             formatarNumero(horas);
-
 
         minutosElemento.textContent =
             formatarNumero(minutos);
 
-
         segundosElemento.textContent =
             formatarNumero(segundos);
 
+
+        console.log(
+            "🟢 DOM atualizado."
+        );
     }
 
 
-    document.body.style.overflow =
-        "hidden";
+    console.log(
+        "🟢 PASSO 7 — Função do contador criada."
+    );
 
+
+    // ======================================
+    // PRIMEIRA EXECUÇÃO
+    // ======================================
 
     actualizarContador();
 
 
-    contadorIntervalo =
-        setInterval(
-            actualizarContador,
-            1000
-        );
+    console.log(
+        "🟢 PASSO 8 — Primeira execução concluída."
+    );
 
 
-    // --------------------------------------
-    // DIAGNÓSTICO
-    // --------------------------------------
+    // ======================================
+    // INTERVALO
+    // ======================================
+
+    setInterval(
+        actualizarContador,
+        1000
+    );
+
+
+    console.log(
+        "🟢 PASSO 9 — setInterval criado."
+    );
+
 
     if (estadoDiagnostico) {
 
-        estadoDiagnostico.innerHTML =
-            '<span class="ok">🟢 Todos os elementos do contador foram encontrados.</span>';
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 PASSO 9 — Contador iniciado.";
 
     }
 
-
-    const segundosInicial =
-        segundosElemento.textContent;
-
-
-    setTimeout(function () {
-
-        const segundosDepois =
-            segundosElemento.textContent;
-
-
-        if (segundosDepois !== segundosInicial) {
-
-            if (estadoDiagnostico) {
-
-                estadoDiagnostico.innerHTML +=
-                    '<br><span class="ok">🟢 O contador está a atualizar.</span>';
-
-            }
-
-        } else {
-
-            if (estadoDiagnostico) {
-
-                estadoDiagnostico.innerHTML +=
-                    '<br><span class="erro">🔴 O contador NÃO atualizou.</span>';
-
-            }
-
-        }
-
-    }, 1500);
-
-
 } else {
+
+    console.log(
+        "🔴 PASSO 3 — ALGUM ELEMENTO NÃO FOI ENCONTRADO."
+    );
 
     if (estadoDiagnostico) {
 
-        estadoDiagnostico.innerHTML =
-            '<span class="erro">🔴 ERRO: algum elemento do contador não foi encontrado.</span>';
+        estadoDiagnostico.innerHTML +=
+            "<br>🔴 PASSO 3 — Algum elemento não foi encontrado.";
 
     }
 
