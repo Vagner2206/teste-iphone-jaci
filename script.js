@@ -30,9 +30,6 @@ const segundosElemento =
     document.querySelector("#segundos");
 
 
-console.log("🔵 PASSO 2 — Elementos procurados.");
-
-
 if (
     contadorAniversario &&
     diasElemento &&
@@ -40,8 +37,6 @@ if (
     minutosElemento &&
     segundosElemento
 ) {
-
-    console.log("🟢 PASSO 3 — Elementos encontrados.");
 
     estadoDiagnostico.innerHTML +=
         "<br>🟢 PASSO 3 — Elementos encontrados.";
@@ -52,13 +47,10 @@ if (
     // ======================================
 
     const MODO_TESTE = true;
-
     const DURACAO_TESTE = 10;
 
     const DATA_ANIVERSARIO =
-        new Date(
-            "2026-10-02T00:00:00"
-        );
+        new Date("2026-10-02T00:00:00");
 
 
     let momentoFinal;
@@ -78,26 +70,13 @@ if (
     }
 
 
-    console.log(
-        "🟢 PASSO 5 — Configuração completa."
-    );
-
     estadoDiagnostico.innerHTML +=
         "<br>🟢 PASSO 5 — Configuração completa.";
 
 
     // ======================================
     // PASSO 6
-    // FORMATAR NÚMERO
     // ======================================
-
-    console.log(
-        "🔵 PASSO 6 — Antes de criar formatarNumero."
-    );
-
-    estadoDiagnostico.innerHTML +=
-        "<br>🔵 PASSO 6 — Antes de criar formatarNumero.";
-
 
     function formatarNumero(numero) {
 
@@ -109,64 +88,93 @@ if (
     }
 
 
-    console.log(
-        "🟢 PASSO 6 — formatarNumero criada."
-    );
-
     estadoDiagnostico.innerHTML +=
         "<br>🟢 PASSO 6 — formatarNumero criada.";
 
 
     // ======================================
     // PASSO 7
-    // FUNÇÃO DO CONTADOR
     // ======================================
-
-    console.log(
-        "🔵 PASSO 7 — Antes de criar actualizarContador."
-    );
-
-    estadoDiagnostico.innerHTML +=
-        "<br>🔵 PASSO 7 — Antes de criar actualizarContador.";
-
 
     function actualizarContador() {
 
         console.log(
-            "🔄 actualizarContador executou."
+            "🔵 actualizarContador começou."
         );
 
 
+        // -------------------------------
+        // TESTE 7A
+        // -------------------------------
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🔵 TESTE 7A — Entrou na função.";
+
+
+        // -------------------------------
+        // TESTE 7B
+        // -------------------------------
+
         const agora = Date.now();
+
+
+        console.log(
+            "🟢 TESTE 7B — Date.now dentro da função:",
+            agora
+        );
+
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 TESTE 7B — Date.now funcionou.";
+
+
+        // -------------------------------
+        // TESTE 7C
+        // -------------------------------
 
         const diferenca =
             momentoFinal - agora;
 
 
         console.log(
-            "⏱️ Diferença:",
+            "🟢 TESTE 7C — Diferença:",
             diferenca
         );
 
 
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 TESTE 7C — Diferença calculada.";
+
+
+        // -------------------------------
+        // TESTE 7D
+        // -------------------------------
+
         if (diferenca <= 0) {
 
-            diasElemento.textContent = "00";
-
-            horasElemento.textContent = "00";
-
-            minutosElemento.textContent = "00";
-
-            segundosElemento.textContent = "00";
-
-
             console.log(
-                "🔴 Contador chegou ao fim."
+                "🔴 TESTE 7D — Diferença <= 0."
             );
+
+            estadoDiagnostico.innerHTML +=
+                "<br>🔴 TESTE 7D — Diferença chegou a zero.";
 
             return;
         }
 
+
+        console.log(
+            "🟢 TESTE 7D — Diferença maior que zero."
+        );
+
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 TESTE 7D — Diferença > 0.";
+
+
+        // -------------------------------
+        // TESTE 7E
+        // -------------------------------
 
         const totalSegundos =
             Math.floor(
@@ -174,12 +182,40 @@ if (
             );
 
 
+        console.log(
+            "🟢 TESTE 7E — Total de segundos:",
+            totalSegundos
+        );
+
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 TESTE 7E — Total de segundos calculado.";
+
+
+        // -------------------------------
+        // TESTE 7F
+        // -------------------------------
+
         const dias =
             Math.floor(
                 totalSegundos /
                 (60 * 60 * 24)
             );
 
+
+        console.log(
+            "🟢 TESTE 7F — Dias:",
+            dias
+        );
+
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 TESTE 7F — Dias calculados.";
+
+
+        // -------------------------------
+        // TESTE 7G
+        // -------------------------------
 
         const horas =
             Math.floor(
@@ -191,6 +227,20 @@ if (
             );
 
 
+        console.log(
+            "🟢 TESTE 7G — Horas:",
+            horas
+        );
+
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 TESTE 7G — Horas calculadas.";
+
+
+        // -------------------------------
+        // TESTE 7H
+        // -------------------------------
+
         const minutos =
             Math.floor(
                 (
@@ -201,34 +251,119 @@ if (
             );
 
 
+        console.log(
+            "🟢 TESTE 7H — Minutos:",
+            minutos
+        );
+
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 TESTE 7H — Minutos calculados.";
+
+
+        // -------------------------------
+        // TESTE 7I
+        // -------------------------------
+
         const segundos =
             totalSegundos %
             60;
 
 
-        diasElemento.textContent =
+        console.log(
+            "🟢 TESTE 7I — Segundos:",
+            segundos
+        );
+
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 TESTE 7I — Segundos calculados.";
+
+
+        // -------------------------------
+        // TESTE 7J
+        // -------------------------------
+
+        const diasFormatados =
             formatarNumero(dias);
 
-        horasElemento.textContent =
+
+        console.log(
+            "🟢 TESTE 7J — Dias formatados:",
+            diasFormatados
+        );
+
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 TESTE 7J — Dias formatados.";
+
+
+        // -------------------------------
+        // TESTE 7K
+        // -------------------------------
+
+        const horasFormatadas =
             formatarNumero(horas);
 
-        minutosElemento.textContent =
+
+        const minutosFormatados =
             formatarNumero(minutos);
 
-        segundosElemento.textContent =
+
+        const segundosFormatados =
             formatarNumero(segundos);
 
 
         console.log(
-            "🟢 DOM atualizado."
+            "🟢 TESTE 7K — Números formatados."
         );
+
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 TESTE 7K — Números formatados.";
+
+
+        // -------------------------------
+        // TESTE 7L
+        // -------------------------------
+
+        diasElemento.textContent =
+            diasFormatados;
+
+
+        console.log(
+            "🟢 TESTE 7L — Dias escritos no DOM."
+        );
+
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 TESTE 7L — Dias escritos.";
+
+
+        // -------------------------------
+        // TESTE 7M
+        // -------------------------------
+
+        horasElemento.textContent =
+            horasFormatadas;
+
+        minutosElemento.textContent =
+            minutosFormatados;
+
+        segundosElemento.textContent =
+            segundosFormatados;
+
+
+        console.log(
+            "🟢 TESTE 7M — Todos os números escritos."
+        );
+
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 TESTE 7M — Contador escrito no DOM.";
 
     }
 
-
-    console.log(
-        "🟢 PASSO 7 — actualizarContador criada."
-    );
 
     estadoDiagnostico.innerHTML +=
         "<br>🟢 PASSO 7 — actualizarContador criada.";
@@ -239,10 +374,6 @@ if (
     // PRIMEIRA EXECUÇÃO
     // ======================================
 
-    console.log(
-        "🔵 PASSO 8 — Antes da primeira execução."
-    );
-
     estadoDiagnostico.innerHTML +=
         "<br>🔵 PASSO 8 — Antes da primeira execução.";
 
@@ -250,61 +381,14 @@ if (
     actualizarContador();
 
 
-    console.log(
-        "🟢 PASSO 8 — Primeira execução concluída."
-    );
-
     estadoDiagnostico.innerHTML +=
         "<br>🟢 PASSO 8 — Primeira execução concluída.";
 
 
-    // ======================================
-    // PASSO 9
-    // SETINTERVAL
-    // ======================================
-
-    console.log(
-        "🔵 PASSO 9 — Antes de criar setInterval."
-    );
-
-    estadoDiagnostico.innerHTML +=
-        "<br>🔵 PASSO 9 — Antes de criar setInterval.";
-
-
-    setInterval(
-        actualizarContador,
-        1000
-    );
-
-
-    console.log(
-        "🟢 PASSO 9 — setInterval criado."
-    );
-
-    estadoDiagnostico.innerHTML +=
-        "<br>🟢 PASSO 9 — setInterval criado.";
-
-
-    // ======================================
-    // TESTE FINAL
-    // ======================================
-
-    setTimeout(function () {
-
-        estadoDiagnostico.innerHTML +=
-            "<br><br>🎯 TESTE C TERMINADO.";
-
-    }, 11000);
-
-
 } else {
 
-    console.log(
-        "🔴 PASSO 3 — Algum elemento não encontrado."
-    );
-
     estadoDiagnostico.innerHTML +=
-        "<br>🔴 PASSO 3 — Algum elemento não encontrado.";
+        "<br>🔴 PASSO 3 — Elemento não encontrado.";
 
 }
 
