@@ -1,4 +1,4 @@
-```javascript
+
 console.log("🔵 PASSO 1 — JavaScript começou.");
 
 const estadoDiagnostico =
@@ -135,4 +135,4 @@ if (
         "<br>🔴 PASSO 3 — Elemento não encontrado.";
 
 }
-```
+
