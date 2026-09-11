@@ -1,4 +1,4 @@
-
+```javascript
 console.log("🔵 PASSO 1 — JavaScript começou.");
 
 const estadoDiagnostico =
@@ -37,40 +37,19 @@ if (
 
 
     // ======================================
-    // CONFIGURAÇÃO
+    // TESTE
     // ======================================
 
-    const MODO_TESTE = true;
-    const DURACAO_TESTE = 10;
+    const agoraInicial =
+        Date.now();
 
-    const DATA_ANIVERSARIO =
-        new Date("2026-10-02T00:00:00");
-
-
-    let momentoFinal;
-
-
-    if (MODO_TESTE) {
-
-        momentoFinal =
-            Date.now() +
-            DURACAO_TESTE * 1000;
-
-    } else {
-
-        momentoFinal =
-            DATA_ANIVERSARIO.getTime();
-
-    }
+    const finalFixo =
+        agoraInicial + 10000;
 
 
     estadoDiagnostico.innerHTML +=
-        "<br>🟢 PASSO 5 — Configuração completa.";
+        "<br>🟢 PASSO 5 — Número final criado.";
 
-
-    // ======================================
-    // FUNÇÃO
-    // ======================================
 
     function actualizarContador() {
 
@@ -78,7 +57,8 @@ if (
             "<br>🔵 7A — Entrou na função.";
 
 
-        const agora = Date.now();
+        const agora =
+            Date.now();
 
 
         estadoDiagnostico.innerHTML +=
@@ -86,78 +66,16 @@ if (
 
 
         // ==================================
-        // TESTE 7C-1
+        // NÃO USAMOS momentoFinal
         // ==================================
-
-        estadoDiagnostico.innerHTML +=
-            "<br>🔵 7C-1 — Antes de testar momentoFinal.";
-
-
-        const testeMomento =
-            momentoFinal;
-
-
-        estadoDiagnostico.innerHTML +=
-            "<br>🟢 7C-1 — momentoFinal lido.";
-
-
-        // ==================================
-        // TESTE 7C-2
-        // ==================================
-
-        estadoDiagnostico.innerHTML +=
-            "<br>🔵 7C-2 — Antes de subtrair.";
-
 
         const diferenca =
-            momentoFinal - agora;
+            finalFixo - agora;
 
 
         estadoDiagnostico.innerHTML +=
-            "<br>🟢 7C-2 — Subtração funcionou.";
+            "<br>🟢 7C — Subtração com número fixo funcionou.";
 
-
-        console.log(
-            "momentoFinal:",
-            momentoFinal
-        );
-
-        console.log(
-            "agora:",
-            agora
-        );
-
-        console.log(
-            "diferenca:",
-            diferenca
-        );
-
-
-        // ==================================
-        // TESTE 7D
-        // ==================================
-
-        estadoDiagnostico.innerHTML +=
-            "<br>🔵 7D — Antes do teste <= 0.";
-
-
-        if (diferenca <= 0) {
-
-            estadoDiagnostico.innerHTML +=
-                "<br>🔴 7D — Diferença <= 0.";
-
-            return;
-
-        }
-
-
-        estadoDiagnostico.innerHTML +=
-            "<br>🟢 7D — Diferença > 0.";
-
-
-        // ==================================
-        // TESTE 7E
-        // ==================================
 
         const totalSegundos =
             Math.floor(
@@ -166,31 +84,23 @@ if (
 
 
         estadoDiagnostico.innerHTML +=
-            "<br>🟢 7E — Total de segundos calculado.";
+            "<br>🟢 7D — Total de segundos calculado.";
 
-
-        // ==================================
-        // TESTE 7F
-        // ==================================
 
         const segundos =
             totalSegundos % 60;
 
 
         estadoDiagnostico.innerHTML +=
-            "<br>🟢 7F — Segundos calculados.";
+            "<br>🟢 7E — Segundos calculados.";
 
-
-        // ==================================
-        // TESTE 7G
-        // ==================================
 
         segundosElemento.textContent =
             String(segundos);
 
 
         estadoDiagnostico.innerHTML +=
-            "<br>🟢 7G — Segundo escrito no DOM.";
+            "<br>🟢 7F — Número escrito no contador.";
 
     }
 
@@ -198,10 +108,6 @@ if (
     estadoDiagnostico.innerHTML +=
         "<br>🟢 PASSO 7 — Função criada.";
 
-
-    // ======================================
-    // PRIMEIRA EXECUÇÃO
-    // ======================================
 
     estadoDiagnostico.innerHTML +=
         "<br>🔵 PASSO 8 — Antes da execução.";
@@ -213,10 +119,20 @@ if (
     estadoDiagnostico.innerHTML +=
         "<br>🟢 PASSO 8 — Execução concluída.";
 
+
+    setInterval(
+        actualizarContador,
+        1000
+    );
+
+
+    estadoDiagnostico.innerHTML +=
+        "<br>🟢 PASSO 9 — setInterval criado.";
+
 } else {
 
     estadoDiagnostico.innerHTML +=
         "<br>🔴 PASSO 3 — Elemento não encontrado.";
 
 }
-
+```
