@@ -1,359 +1,269 @@
-console.log("🔵 DIAGNÓSTICO INICIADO");
+
+// ==========================================
+// TESTE B
+// CONTADOR ORIGINAL DO SITE
+// ==========================================
 
 
-// ==================================================
-// 1. CONFIRMAR QUE O JAVASCRIPT CARREGOU
-// ==================================================
+// ------------------------------------------
+// DIAGNÓSTICO INICIAL
+// ------------------------------------------
 
-const testeJS =
-    document.querySelector("#testeJS");
+const estadoDiagnostico =
+    document.querySelector("#estado");
 
-if (testeJS) {
-
-    testeJS.textContent =
-        "✅ JavaScript carregado";
-
-    testeJS.classList.add("sucesso");
-
+if (estadoDiagnostico) {
+    estadoDiagnostico.innerHTML =
+        '<span class="ok">🟢 JavaScript carregado.</span>';
 }
 
 
-// ==================================================
-// ELEMENTOS DO DIAGNÓSTICO
-// ==================================================
+// ------------------------------------------
+// CÓDIGO ORIGINAL DO CONTADOR
+// ------------------------------------------
+
+const MODO_TESTE = true;
+const DURACAO_TESTE = 5;
+
+const DATA_ANIVERSARIO =
+    new Date(
+        "2026-10-02T00:00:00"
+    );
+
+
+const contadorAniversario =
+    document.querySelector(
+        "#contadorAniversario"
+    );
+
+
+const diasElemento =
+    document.querySelector("#dias");
+
+
+const horasElemento =
+    document.querySelector("#horas");
+
+
+const minutosElemento =
+    document.querySelector("#minutos");
+
 
 const segundosElemento =
     document.querySelector("#segundos");
 
-const estadoContador =
-    document.querySelector("#estadoContador");
 
-const testeDate =
-    document.querySelector("#testeDate");
+if (
+    contadorAniversario &&
+    diasElemento &&
+    horasElemento &&
+    minutosElemento &&
+    segundosElemento
+) {
 
-const testeInterval =
-    document.querySelector("#testeInterval");
-
-const testeTexto =
-    document.querySelector("#testeTexto");
-
-const testeContador =
-    document.querySelector("#testeContador");
-
-const testeResultado =
-    document.querySelector("#testeResultado");
-
-const resultadoFinal =
-    document.querySelector("#resultadoFinal");
+    let momentoFinal;
+    let contadorIntervalo = null;
 
 
-// ==================================================
-// VARIÁVEIS
-// ==================================================
+    if (MODO_TESTE) {
 
-let valorContador = 5;
-
-let intervalo = null;
-
-let intervaloFuncionou = false;
-
-let textoFuncionou = false;
-
-let contadorFuncionou = false;
-
-
-// ==================================================
-// 2. TESTAR Date.now()
-// ==================================================
-
-try {
-
-    const agora = Date.now();
-
-    console.log(
-        "Date.now():",
-        agora
-    );
-
-    if (
-        typeof agora === "number" &&
-        agora > 0
-    ) {
-
-        testeDate.textContent =
-            "✅ Date.now() está a funcionar";
-
-        testeDate.classList.add(
-            "sucesso"
-        );
+        momentoFinal =
+            Date.now() +
+            DURACAO_TESTE * 1000;
 
     } else {
 
-        testeDate.textContent =
-            "❌ Date.now() devolveu um valor inválido";
+        momentoFinal =
+            DATA_ANIVERSARIO.getTime();
 
-        testeDate.classList.add(
-            "erro"
+    }
+
+
+    function formatarNumero(numero) {
+
+        return String(numero).padStart(
+            2,
+            "0"
         );
 
     }
 
-} catch (erro) {
 
-    console.error(
-        "Erro no Date.now():",
-        erro
-    );
+    function desbloquearSite() {
 
-    testeDate.textContent =
-        "❌ Erro ao executar Date.now()";
-
-    testeDate.classList.add(
-        "erro"
-    );
-
-}
-
-
-// ==================================================
-// 3. TESTAR ATUALIZAÇÃO DO HTML
-// ==================================================
-
-try {
-
-    segundosElemento.textContent =
-        "05";
-
-    if (
-        segundosElemento.textContent ===
-        "05"
-    ) {
-
-        textoFuncionou = true;
-
-        testeTexto.textContent =
-            "✅ JavaScript conseguiu alterar o texto da página";
-
-        testeTexto.classList.add(
-            "sucesso"
+        contadorAniversario.classList.add(
+            "liberado"
         );
 
-    } else {
+        document.body.style.overflow = "";
 
-        testeTexto.textContent =
-            "❌ JavaScript não conseguiu alterar o texto";
-
-        testeTexto.classList.add(
-            "erro"
+        console.log(
+            "🎉 Contador terminou! Site desbloqueado."
         );
 
     }
 
-} catch (erro) {
 
-    console.error(
-        "Erro ao alterar texto:",
-        erro
-    );
+    function actualizarContador() {
 
-    testeTexto.textContent =
-        "❌ Erro ao alterar o texto da página";
+        const agora = Date.now();
 
-    testeTexto.classList.add(
-        "erro"
-    );
-
-}
+        const diferenca =
+            momentoFinal - agora;
 
 
-// ==================================================
-// 4. TESTAR setInterval()
-// ==================================================
+        if (diferenca <= 0) {
 
-let numeroTestesInterval =
-    0;
+            diasElemento.textContent = "00";
 
-try {
+            horasElemento.textContent = "00";
 
-    intervalo =
-        setInterval(function () {
+            minutosElemento.textContent = "00";
 
-            numeroTestesInterval++;
-
-            console.log(
-                "setInterval executou:",
-                numeroTestesInterval
-            );
-
-            if (
-                numeroTestesInterval >= 2
-            ) {
-
-                clearInterval(
-                    intervalo
-                );
-
-                intervalo =
-                    null;
-
-                intervaloFuncionou =
-                    true;
-
-                testeInterval.textContent =
-                    "✅ setInterval() está a funcionar";
-
-                testeInterval.classList.add(
-                    "sucesso"
-                );
-
-                iniciarContador();
-
-            }
-
-        }, 1000);
-
-} catch (erro) {
-
-    console.error(
-        "Erro no setInterval():",
-        erro
-    );
-
-    testeInterval.textContent =
-        "❌ Erro ao executar setInterval()";
-
-    testeInterval.classList.add(
-        "erro"
-    );
-
-}
+            segundosElemento.textContent = "00";
 
 
-// ==================================================
-// 5. CONTADOR REAL DE TESTE
-// ==================================================
-
-function iniciarContador() {
-
-    console.log(
-        "🟢 Iniciando contador..."
-    );
-
-    valorContador = 5;
-
-    segundosElemento.textContent =
-        String(valorContador);
-
-    estadoContador.textContent =
-        "Contador iniciado em 5...";
-
-    const inicio =
-        Date.now();
-
-    const contadorIntervalo =
-        setInterval(function () {
-
-            const agora =
-                Date.now();
-
-            const tempoPassado =
-                agora - inicio;
-
-            console.log(
-                "Tempo passado:",
-                tempoPassado
-            );
-
-            valorContador--;
-
-            if (
-                valorContador < 0
-            ) {
+            if (contadorIntervalo) {
 
                 clearInterval(
                     contadorIntervalo
                 );
 
-                valorContador =
-                    0;
+                contadorIntervalo = null;
 
-                segundosElemento.textContent =
-                    "00";
-
-                estadoContador.textContent =
-                    "🎉 Contador chegou a zero!";
-
-                contadorFuncionou =
-                    true;
-
-                testeContador.textContent =
-                    "✅ Contador está a funcionar";
-
-                testeContador.classList.add(
-                    "sucesso"
-                );
-
-                finalizarDiagnostico();
-
-                return;
             }
 
-            segundosElemento.textContent =
-                String(
-                    valorContador
-                ).padStart(
-                    2,
-                    "0"
-                );
 
-            estadoContador.textContent =
-                "Contador a funcionar: " +
-                valorContador;
+            desbloquearSite();
 
-        }, 1000);
+            return;
 
-}
+        }
 
 
-// ==================================================
-// 6. RESULTADO FINAL
-// ==================================================
+        const totalSegundos =
+            Math.floor(
+                diferenca / 1000
+            );
 
-function finalizarDiagnostico() {
 
-    console.log(
-        "🔵 Finalizando diagnóstico..."
-    );
+        const dias =
+            Math.floor(
+                totalSegundos /
+                (60 * 60 * 24)
+            );
 
-    if (
-        intervaloFuncionou &&
-        textoFuncionou &&
-        contadorFuncionou
-    ) {
 
-        testeResultado.textContent =
-            "✅ Todos os testes principais passaram";
+        const horas =
+            Math.floor(
+                (
+                    totalSegundos %
+                    (60 * 60 * 24)
+                ) /
+                (60 * 60)
+            );
 
-        testeResultado.classList.add(
-            "sucesso"
+
+        const minutos =
+            Math.floor(
+                (
+                    totalSegundos %
+                    (60 * 60)
+                ) /
+                60
+            );
+
+
+        const segundos =
+            totalSegundos %
+            60;
+
+
+        diasElemento.textContent =
+            formatarNumero(dias);
+
+
+        horasElemento.textContent =
+            formatarNumero(horas);
+
+
+        minutosElemento.textContent =
+            formatarNumero(minutos);
+
+
+        segundosElemento.textContent =
+            formatarNumero(segundos);
+
+    }
+
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    actualizarContador();
+
+
+    contadorIntervalo =
+        setInterval(
+            actualizarContador,
+            1000
         );
 
-        resultadoFinal.style.display =
-            "block";
 
-        console.log(
-            "🎉 TESTE CONCLUÍDO COM SUCESSO"
-        );
+    // --------------------------------------
+    // DIAGNÓSTICO
+    // --------------------------------------
 
-    } else {
+    if (estadoDiagnostico) {
 
-        testeResultado.textContent =
-            "⚠️ O contador chegou ao fim, mas algum teste anterior falhou";
+        estadoDiagnostico.innerHTML =
+            '<span class="ok">🟢 Todos os elementos do contador foram encontrados.</span>';
 
-        testeResultado.classList.add(
-            "aviso"
-        );
+    }
+
+
+    const segundosInicial =
+        segundosElemento.textContent;
+
+
+    setTimeout(function () {
+
+        const segundosDepois =
+            segundosElemento.textContent;
+
+
+        if (segundosDepois !== segundosInicial) {
+
+            if (estadoDiagnostico) {
+
+                estadoDiagnostico.innerHTML +=
+                    '<br><span class="ok">🟢 O contador está a atualizar.</span>';
+
+            }
+
+        } else {
+
+            if (estadoDiagnostico) {
+
+                estadoDiagnostico.innerHTML +=
+                    '<br><span class="erro">🔴 O contador NÃO atualizou.</span>';
+
+            }
+
+        }
+
+    }, 1500);
+
+
+} else {
+
+    if (estadoDiagnostico) {
+
+        estadoDiagnostico.innerHTML =
+            '<span class="erro">🔴 ERRO: algum elemento do contador não foi encontrado.</span>';
 
     }
 
 }
+

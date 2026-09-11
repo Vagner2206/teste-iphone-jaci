@@ -1,14 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Diagnóstico iPhone - Jaci</title>
+    <title>Teste B — Contador Original</title>
 
     <style>
         * {
@@ -18,167 +15,131 @@
         body {
             margin: 0;
             min-height: 100vh;
-            padding: 30px 20px;
             background: #07111f;
             color: white;
             font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            padding: 20px;
+        }
+
+        .teste {
+            width: 100%;
+            max-width: 500px;
         }
 
         h1 {
+            color: #60a5fa;
             margin-bottom: 10px;
         }
 
         .subtitulo {
-            color: #aab8cc;
+            color: #aaa;
             margin-bottom: 30px;
         }
 
-        .contador {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto 30px;
-            padding: 25px 15px;
+        #contadorAniversario {
+            padding: 30px 20px;
             border-radius: 20px;
-            background: #0d2038;
-            border: 1px solid #24476d;
+            background: #0f1f36;
+            border: 1px solid #1d4ed8;
         }
 
-        .tempo {
+        .contador {
             display: flex;
             justify-content: center;
-            gap: 8px;
-            font-size: 2.2rem;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .bloco {
+            min-width: 70px;
+            padding: 15px 10px;
+            background: #07111f;
+            border-radius: 12px;
+        }
+
+        .numero {
+            display: block;
+            font-size: 32px;
             font-weight: bold;
+            color: #60a5fa;
         }
 
-        .tempo span {
-            min-width: 55px;
+        .texto {
+            font-size: 12px;
+            color: #aaa;
         }
 
-        .diagnostico {
-            width: 100%;
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 15px;
-            background: #0b192b;
+        #diagnostico {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 12px;
+            background: #111827;
             text-align: left;
+            font-size: 14px;
+            line-height: 1.6;
         }
 
-        .teste {
-            padding: 12px;
-            margin-bottom: 8px;
-            border-radius: 8px;
-            background: #132943;
-        }
-
-        .sucesso {
-            border-left: 4px solid #22c55e;
+        .ok {
+            color: #4ade80;
         }
 
         .erro {
-            border-left: 4px solid #ef4444;
-        }
-
-        .aviso {
-            border-left: 4px solid #f59e0b;
-        }
-
-        #resultadoFinal {
-            margin-top: 25px;
-            padding: 20px;
-            border-radius: 15px;
-            background: #102f22;
-            display: none;
-        }
-
-        #resultadoFinal h2 {
-            margin-top: 0;
-        }
-
-        code {
-            color: #60a5fa;
+            color: #f87171;
         }
     </style>
 </head>
 
 <body>
 
-    <h1>🔎 Diagnóstico do iPhone</h1>
+    <main class="teste">
 
-    <p class="subtitulo">
-        Teste de compatibilidade JavaScript
-    </p>
+        <h1>🧪 Teste B</h1>
 
-    <div class="contador">
-
-        <h2>Contador de teste</h2>
-
-        <div class="tempo">
-            <span id="segundos">00</span>
-        </div>
-
-        <p id="estadoContador">
-            A preparar o contador...
+        <p class="subtitulo">
+            Contador original do site
         </p>
 
-    </div>
+        <section id="contadorAniversario">
 
-    <div class="diagnostico">
+            <div class="contador">
 
-        <h2>📋 Diagnóstico</h2>
+                <div class="bloco">
+                    <span id="dias" class="numero">00</span>
+                    <span class="texto">DIAS</span>
+                </div>
 
-        <div id="testeJS" class="teste">
-            ⏳ JavaScript: a testar...
+                <div class="bloco">
+                    <span id="horas" class="numero">00</span>
+                    <span class="texto">HORAS</span>
+                </div>
+
+                <div class="bloco">
+                    <span id="minutos" class="numero">00</span>
+                    <span class="texto">MINUTOS</span>
+                </div>
+
+                <div class="bloco">
+                    <span id="segundos" class="numero">00</span>
+                    <span class="texto">SEGUNDOS</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <div id="diagnostico">
+            <strong>Diagnóstico:</strong>
+            <div id="estado">A iniciar...</div>
         </div>
 
-        <div id="testeDate" class="teste">
-            ⏳ Date.now(): a testar...
-        </div>
-
-        <div id="testeInterval" class="teste">
-            ⏳ setInterval(): a testar...
-        </div>
-
-        <div id="testeTexto" class="teste">
-            ⏳ Atualização do texto: a testar...
-        </div>
-
-        <div id="testeContador" class="teste">
-            ⏳ Contador: a testar...
-        </div>
-
-        <div id="testeResultado" class="teste">
-            ⏳ Resultado final: a testar...
-        </div>
-
-    </div>
-
-    <div id="resultadoFinal">
-
-        <h2>🎉 Teste concluído!</h2>
-
-        <p>
-            O dispositivo conseguiu executar
-            corretamente o contador JavaScript.
-        </p>
-
-        <p>
-            Se estás a ver esta mensagem,
-            o mecanismo básico do contador
-            está a funcionar.
-        </p>
-
-    </div>
-
-    <!-- IMPORTANTE:
-         O JavaScript é carregado no final do BODY.
-         Isto permite que todos os elementos HTML
-         existam antes do script começar.
-    -->
+    </main>
 
     <script src="script.js"></script>
 
 </body>
 </html>
+
