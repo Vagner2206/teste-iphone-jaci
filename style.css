@@ -1,0 +1,412 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Georgia, "Times New Roman", serif;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(59, 130, 246, 0.18),
+            transparent 55%
+        ),
+        #07111f;
+
+    color: white;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   CONTADOR
+===================================================== */
+
+.contador-aniversario {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 20000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 100vh;
+
+    padding: 30px 15px;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(59, 130, 246, 0.18),
+            transparent 55%
+        ),
+        #07111f;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+
+/* =====================================================
+   DESBLOQUEIO
+===================================================== */
+
+.contador-aniversario.liberado {
+
+    opacity: 0 !important;
+
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+
+    display: none !important;
+}
+
+
+/* =====================================================
+   CONTEÚDO
+===================================================== */
+
+.conteudo-contador {
+
+    width: 100%;
+
+    max-width: 900px;
+}
+
+
+.ampulheta {
+
+    font-size: 70px;
+
+    margin-bottom: 20px;
+}
+
+
+h1 {
+
+    font-size: clamp(
+        42px,
+        8vw,
+        72px
+    );
+
+    margin-bottom: 25px;
+}
+
+
+.conteudo-contador > p {
+
+    font-size: 20px;
+
+    line-height: 1.6;
+
+    margin-bottom: 35px;
+
+    opacity: 0.85;
+}
+
+
+/* =====================================================
+   CONTADOR NUMÉRICO
+===================================================== */
+
+.contador {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    width: 100%;
+}
+
+
+.bloco-tempo {
+
+    width: 145px;
+
+    min-height: 145px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border:
+        1px solid rgba(
+            147,
+            197,
+            253,
+            0.25
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.25);
+}
+
+
+.bloco-tempo span {
+
+    font-size: 55px;
+
+    font-weight: bold;
+
+    line-height: 1;
+}
+
+
+.bloco-tempo small {
+
+    margin-top: 15px;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.7;
+}
+
+
+.separador {
+
+    font-size: 45px;
+
+    color: #60a5fa;
+}
+
+
+/* =====================================================
+   MENSAGEM
+===================================================== */
+
+.mensagem {
+
+    margin-top: 45px !important;
+
+    font-style: italic;
+
+    opacity: 0.7 !important;
+}
+
+
+/* =====================================================
+   RESULTADO
+===================================================== */
+
+#resultado {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+}
+
+
+.cartao-sucesso {
+
+    width: 100%;
+
+    max-width: 600px;
+
+    padding: 50px 30px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border:
+        1px solid rgba(
+            96,
+            165,
+            250,
+            0.3
+        );
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.3);
+}
+
+
+.emoji {
+
+    font-size: 70px;
+
+    margin-bottom: 20px;
+}
+
+
+.cartao-sucesso h2 {
+
+    font-size: 45px;
+
+    margin-bottom: 20px;
+}
+
+
+.cartao-sucesso p {
+
+    font-size: 20px;
+
+    line-height: 1.6;
+
+    margin-top: 12px;
+
+    opacity: 0.85;
+}
+
+
+/* =====================================================
+   DIAGNÓSTICO
+===================================================== */
+
+#diagnostico {
+
+    position: fixed;
+
+    bottom: 10px;
+
+    left: 10px;
+
+    right: 10px;
+
+    z-index: 30000;
+
+    padding: 10px 15px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(0, 0, 0, 0.75);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 12px;
+
+    text-align: left;
+}
+
+
+#diagnostico h3 {
+
+    margin-bottom: 5px;
+
+    color: #60a5fa;
+}
+
+
+#diagnostico p {
+
+    margin: 3px 0;
+}
+
+
+/* =====================================================
+   TELEMÓVEL
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .contador {
+
+        gap: 4px;
+
+    }
+
+
+    .bloco-tempo {
+
+        width: 20vw;
+
+        min-width: 65px;
+
+        min-height: 105px;
+
+        border-radius: 18px;
+
+    }
+
+
+    .bloco-tempo span {
+
+        font-size: 30px;
+
+    }
+
+
+    .bloco-tempo small {
+
+        font-size: 9px;
+
+        letter-spacing: 1px;
+
+        margin-top: 10px;
+
+    }
+
+
+    .separador {
+
+        font-size: 25px;
+
+    }
+
+
+    h1 {
+
+        font-size: 45px;
+
+    }
+
+
+    .conteudo-contador > p {
+
+        font-size: 17px;
+
+    }
+
+}

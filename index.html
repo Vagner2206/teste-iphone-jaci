@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Teste iPhone — Jaci</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         CONTADOR
+    ====================================================== -->
+
+    <section
+        id="contadorAniversario"
+        class="contador-aniversario"
+    >
+
+        <div class="conteudo-contador">
+
+            <div class="ampulheta">
+                ⌛
+            </div>
+
+            <h1>
+                Falta pouco...
+            </h1>
+
+            <p>
+                Este é um teste de compatibilidade.
+            </p>
+
+            <div class="contador">
+
+                <div class="bloco-tempo">
+                    <span id="dias">00</span>
+                    <small>DIAS</small>
+                </div>
+
+                <div class="separador">
+                    :
+                </div>
+
+                <div class="bloco-tempo">
+                    <span id="horas">00</span>
+                    <small>HORAS</small>
+                </div>
+
+                <div class="separador">
+                    :
+                </div>
+
+                <div class="bloco-tempo">
+                    <span id="minutos">00</span>
+                    <small>MINUTOS</small>
+                </div>
+
+                <div class="separador">
+                    :
+                </div>
+
+                <div class="bloco-tempo">
+                    <span id="segundos">00</span>
+                    <small>SEGUNDOS</small>
+                </div>
+
+            </div>
+
+            <p class="mensagem">
+                Se o contador começar em 5 e chegar a 0,
+                o teste está a funcionar.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RESULTADO DO TESTE
+    ====================================================== -->
+
+    <main id="resultado">
+
+        <div class="cartao-sucesso">
+
+            <div class="emoji">
+                🎉
+            </div>
+
+            <h2>
+                PARABÉNS!
+            </h2>
+
+            <p>
+                O teu iPhone conseguiu executar
+                o contador JavaScript.
+            </p>
+
+            <p>
+                O teste foi concluído com sucesso. 💙
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         ELEMENTOS QUE O SCRIPT ORIGINAL PROCURA
+         Não precisam funcionar neste teste.
+    ====================================================== -->
+
+    <section id="inicio" style="display:none;"></section>
+
+    <section id="historia" style="display:none;">
+
+        <div class="cartoes-historia"></div>
+
+    </section>
+
+
+    <section id="galeria" style="display:none;"></section>
+
+    <section id="sobre-ela" style="display:none;"></section>
+
+    <section id="carta" style="display:none;"></section>
+
+    <section id="aniversario" style="display:none;"></section>
+
+    <footer style="display:none;"></footer>
+
+
+    <!-- =====================================================
+         BOTÃO DE TESTE
+    ====================================================== -->
+
+    <div id="revelarSurpresa" style="display:none;">
+        <button id="btnRevelarSurpresa">
+            Revelar teste
+        </button>
+    </div>
+
+
+    <!-- =====================================================
+         DIAGNÓSTICO
+    ====================================================== -->
+
+    <div id="diagnostico">
+
+        <h3>Diagnóstico</h3>
+
+        <p id="statusJS">
+            A carregar JavaScript...
+        </p>
+
+        <p id="statusContador">
+            A verificar contador...
+        </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT REAL DA SURPRESA
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+
+    <!-- =====================================================
+         DIAGNÓSTICO EXTRA
+    ====================================================== -->
+
+    <script>
+
+        const statusJS =
+            document.querySelector("#statusJS");
+
+        const statusContador =
+            document.querySelector("#statusContador");
+
+
+        if (statusJS) {
+
+            statusJS.textContent =
+                "JavaScript carregado.";
+
+        }
+
+
+        setTimeout(function () {
+
+            const segundos =
+                document.querySelector("#segundos");
+
+            if (!segundos) {
+
+                if (statusContador) {
+
+                    statusContador.textContent =
+                        "ERRO: elemento do contador não encontrado.";
+
+                }
+
+                return;
+
+            }
+
+
+            if (
+                segundos.textContent === "00"
+            ) {
+
+                if (statusContador) {
+
+                    statusContador.textContent =
+                        "⚠️ O contador continua em 00.";
+
+                }
+
+            } else {
+
+                if (statusContador) {
+
+                    statusContador.textContent =
+                        "✅ O contador está a funcionar.";
+
+                }
+
+            }
+
+        }, 1500);
+
+
+        window.addEventListener(
+            "error",
+            function (evento) {
+
+                if (statusJS) {
+
+                    statusJS.textContent =
+                        "❌ ERRO NO JAVASCRIPT: " +
+                        evento.message;
+
+                }
+
+            }
+        );
+
+
+        window.addEventListener(
+            "unhandledrejection",
+            function () {
+
+                if (statusJS) {
+
+                    statusJS.textContent =
+                        "❌ ERRO: promessa JavaScript rejeitada.";
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
