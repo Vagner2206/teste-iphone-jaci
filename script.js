@@ -4,15 +4,9 @@ console.log("🔵 PASSO 1 — JavaScript começou.");
 const estadoDiagnostico =
     document.querySelector("#estado");
 
-if (estadoDiagnostico) {
-    estadoDiagnostico.innerHTML =
-        "🟢 PASSO 1 — JavaScript carregado.";
-}
+estadoDiagnostico.innerHTML =
+    "🟢 PASSO 1 — JavaScript carregado.";
 
-
-// ==========================================
-// ELEMENTOS
-// ==========================================
 
 const contadorAniversario =
     document.querySelector("#contadorAniversario");
@@ -75,106 +69,95 @@ if (
 
 
     // ======================================
-    // PASSO 6
-    // ======================================
-
-    function formatarNumero(numero) {
-
-        return String(numero).padStart(
-            2,
-            "0"
-        );
-
-    }
-
-
-    estadoDiagnostico.innerHTML +=
-        "<br>🟢 PASSO 6 — formatarNumero criada.";
-
-
-    // ======================================
-    // PASSO 7
+    // FUNÇÃO
     // ======================================
 
     function actualizarContador() {
 
-        console.log(
-            "🔵 actualizarContador começou."
-        );
-
-
-        // -------------------------------
-        // TESTE 7A
-        // -------------------------------
-
         estadoDiagnostico.innerHTML +=
-            "<br>🔵 TESTE 7A — Entrou na função.";
+            "<br>🔵 7A — Entrou na função.";
 
-
-        // -------------------------------
-        // TESTE 7B
-        // -------------------------------
 
         const agora = Date.now();
 
 
-        console.log(
-            "🟢 TESTE 7B — Date.now dentro da função:",
-            agora
-        );
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 7B — Date.now funcionou.";
+
+
+        // ==================================
+        // TESTE 7C-1
+        // ==================================
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🔵 7C-1 — Antes de testar momentoFinal.";
+
+
+        const testeMomento =
+            momentoFinal;
 
 
         estadoDiagnostico.innerHTML +=
-            "<br>🟢 TESTE 7B — Date.now funcionou.";
+            "<br>🟢 7C-1 — momentoFinal lido.";
 
 
-        // -------------------------------
-        // TESTE 7C
-        // -------------------------------
+        // ==================================
+        // TESTE 7C-2
+        // ==================================
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🔵 7C-2 — Antes de subtrair.";
+
 
         const diferenca =
             momentoFinal - agora;
 
 
+        estadoDiagnostico.innerHTML +=
+            "<br>🟢 7C-2 — Subtração funcionou.";
+
+
         console.log(
-            "🟢 TESTE 7C — Diferença:",
+            "momentoFinal:",
+            momentoFinal
+        );
+
+        console.log(
+            "agora:",
+            agora
+        );
+
+        console.log(
+            "diferenca:",
             diferenca
         );
 
 
-        estadoDiagnostico.innerHTML +=
-            "<br>🟢 TESTE 7C — Diferença calculada.";
-
-
-        // -------------------------------
+        // ==================================
         // TESTE 7D
-        // -------------------------------
+        // ==================================
+
+        estadoDiagnostico.innerHTML +=
+            "<br>🔵 7D — Antes do teste <= 0.";
+
 
         if (diferenca <= 0) {
 
-            console.log(
-                "🔴 TESTE 7D — Diferença <= 0."
-            );
-
             estadoDiagnostico.innerHTML +=
-                "<br>🔴 TESTE 7D — Diferença chegou a zero.";
+                "<br>🔴 7D — Diferença <= 0.";
 
             return;
+
         }
 
 
-        console.log(
-            "🟢 TESTE 7D — Diferença maior que zero."
-        );
-
-
         estadoDiagnostico.innerHTML +=
-            "<br>🟢 TESTE 7D — Diferença > 0.";
+            "<br>🟢 7D — Diferença > 0.";
 
 
-        // -------------------------------
+        // ==================================
         // TESTE 7E
-        // -------------------------------
+        // ==================================
 
         const totalSegundos =
             Math.floor(
@@ -182,208 +165,53 @@ if (
             );
 
 
-        console.log(
-            "🟢 TESTE 7E — Total de segundos:",
-            totalSegundos
-        );
-
-
         estadoDiagnostico.innerHTML +=
-            "<br>🟢 TESTE 7E — Total de segundos calculado.";
+            "<br>🟢 7E — Total de segundos calculado.";
 
 
-        // -------------------------------
+        // ==================================
         // TESTE 7F
-        // -------------------------------
-
-        const dias =
-            Math.floor(
-                totalSegundos /
-                (60 * 60 * 24)
-            );
-
-
-        console.log(
-            "🟢 TESTE 7F — Dias:",
-            dias
-        );
-
-
-        estadoDiagnostico.innerHTML +=
-            "<br>🟢 TESTE 7F — Dias calculados.";
-
-
-        // -------------------------------
-        // TESTE 7G
-        // -------------------------------
-
-        const horas =
-            Math.floor(
-                (
-                    totalSegundos %
-                    (60 * 60 * 24)
-                ) /
-                (60 * 60)
-            );
-
-
-        console.log(
-            "🟢 TESTE 7G — Horas:",
-            horas
-        );
-
-
-        estadoDiagnostico.innerHTML +=
-            "<br>🟢 TESTE 7G — Horas calculadas.";
-
-
-        // -------------------------------
-        // TESTE 7H
-        // -------------------------------
-
-        const minutos =
-            Math.floor(
-                (
-                    totalSegundos %
-                    (60 * 60)
-                ) /
-                60
-            );
-
-
-        console.log(
-            "🟢 TESTE 7H — Minutos:",
-            minutos
-        );
-
-
-        estadoDiagnostico.innerHTML +=
-            "<br>🟢 TESTE 7H — Minutos calculados.";
-
-
-        // -------------------------------
-        // TESTE 7I
-        // -------------------------------
+        // ==================================
 
         const segundos =
-            totalSegundos %
-            60;
-
-
-        console.log(
-            "🟢 TESTE 7I — Segundos:",
-            segundos
-        );
+            totalSegundos % 60;
 
 
         estadoDiagnostico.innerHTML +=
-            "<br>🟢 TESTE 7I — Segundos calculados.";
+            "<br>🟢 7F — Segundos calculados.";
 
 
-        // -------------------------------
-        // TESTE 7J
-        // -------------------------------
-
-        const diasFormatados =
-            formatarNumero(dias);
-
-
-        console.log(
-            "🟢 TESTE 7J — Dias formatados:",
-            diasFormatados
-        );
-
-
-        estadoDiagnostico.innerHTML +=
-            "<br>🟢 TESTE 7J — Dias formatados.";
-
-
-        // -------------------------------
-        // TESTE 7K
-        // -------------------------------
-
-        const horasFormatadas =
-            formatarNumero(horas);
-
-
-        const minutosFormatados =
-            formatarNumero(minutos);
-
-
-        const segundosFormatados =
-            formatarNumero(segundos);
-
-
-        console.log(
-            "🟢 TESTE 7K — Números formatados."
-        );
-
-
-        estadoDiagnostico.innerHTML +=
-            "<br>🟢 TESTE 7K — Números formatados.";
-
-
-        // -------------------------------
-        // TESTE 7L
-        // -------------------------------
-
-        diasElemento.textContent =
-            diasFormatados;
-
-
-        console.log(
-            "🟢 TESTE 7L — Dias escritos no DOM."
-        );
-
-
-        estadoDiagnostico.innerHTML +=
-            "<br>🟢 TESTE 7L — Dias escritos.";
-
-
-        // -------------------------------
-        // TESTE 7M
-        // -------------------------------
-
-        horasElemento.textContent =
-            horasFormatadas;
-
-        minutosElemento.textContent =
-            minutosFormatados;
+        // ==================================
+        // TESTE 7G
+        // ==================================
 
         segundosElemento.textContent =
-            segundosFormatados;
-
-
-        console.log(
-            "🟢 TESTE 7M — Todos os números escritos."
-        );
+            String(segundos);
 
 
         estadoDiagnostico.innerHTML +=
-            "<br>🟢 TESTE 7M — Contador escrito no DOM.";
+            "<br>🟢 7G — Segundo escrito no DOM.";
 
     }
 
 
     estadoDiagnostico.innerHTML +=
-        "<br>🟢 PASSO 7 — actualizarContador criada.";
+        "<br>🟢 PASSO 7 — Função criada.";
 
 
     // ======================================
-    // PASSO 8
     // PRIMEIRA EXECUÇÃO
     // ======================================
 
     estadoDiagnostico.innerHTML +=
-        "<br>🔵 PASSO 8 — Antes da primeira execução.";
+        "<br>🔵 PASSO 8 — Antes da execução.";
 
 
     actualizarContador();
 
 
     estadoDiagnostico.innerHTML +=
-        "<br>🟢 PASSO 8 — Primeira execução concluída.";
-
+        "<br>🟢 PASSO 8 — Execução concluída.";
 
 } else {
 
