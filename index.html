@@ -8,270 +8,177 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Teste iPhone — Jaci</title>
+    <title>Diagnóstico iPhone - Jaci</title>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 30px 20px;
+            background: #07111f;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .subtitulo {
+            color: #aab8cc;
+            margin-bottom: 30px;
+        }
+
+        .contador {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 30px;
+            padding: 25px 15px;
+            border-radius: 20px;
+            background: #0d2038;
+            border: 1px solid #24476d;
+        }
+
+        .tempo {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+
+        .tempo span {
+            min-width: 55px;
+        }
+
+        .diagnostico {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 15px;
+            background: #0b192b;
+            text-align: left;
+        }
+
+        .teste {
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            background: #132943;
+        }
+
+        .sucesso {
+            border-left: 4px solid #22c55e;
+        }
+
+        .erro {
+            border-left: 4px solid #ef4444;
+        }
+
+        .aviso {
+            border-left: 4px solid #f59e0b;
+        }
+
+        #resultadoFinal {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 15px;
+            background: #102f22;
+            display: none;
+        }
+
+        #resultadoFinal h2 {
+            margin-top: 0;
+        }
+
+        code {
+            color: #60a5fa;
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- =====================================================
-         CONTADOR
-    ====================================================== -->
+    <h1>🔎 Diagnóstico do iPhone</h1>
 
-    <section
-        id="contadorAniversario"
-        class="contador-aniversario"
-    >
+    <p class="subtitulo">
+        Teste de compatibilidade JavaScript
+    </p>
 
-        <div class="conteudo-contador">
+    <div class="contador">
 
-            <div class="ampulheta">
-                ⌛
-            </div>
+        <h2>Contador de teste</h2>
 
-            <h1>
-                Falta pouco...
-            </h1>
-
-            <p>
-                Este é um teste de compatibilidade.
-            </p>
-
-            <div class="contador">
-
-                <div class="bloco-tempo">
-                    <span id="dias">00</span>
-                    <small>DIAS</small>
-                </div>
-
-                <div class="separador">
-                    :
-                </div>
-
-                <div class="bloco-tempo">
-                    <span id="horas">00</span>
-                    <small>HORAS</small>
-                </div>
-
-                <div class="separador">
-                    :
-                </div>
-
-                <div class="bloco-tempo">
-                    <span id="minutos">00</span>
-                    <small>MINUTOS</small>
-                </div>
-
-                <div class="separador">
-                    :
-                </div>
-
-                <div class="bloco-tempo">
-                    <span id="segundos">00</span>
-                    <small>SEGUNDOS</small>
-                </div>
-
-            </div>
-
-            <p class="mensagem">
-                Se o contador começar em 5 e chegar a 0,
-                o teste está a funcionar.
-            </p>
-
+        <div class="tempo">
+            <span id="segundos">00</span>
         </div>
 
-    </section>
-
-
-    <!-- =====================================================
-         RESULTADO DO TESTE
-    ====================================================== -->
-
-    <main id="resultado">
-
-        <div class="cartao-sucesso">
-
-            <div class="emoji">
-                🎉
-            </div>
-
-            <h2>
-                PARABÉNS!
-            </h2>
-
-            <p>
-                O teu iPhone conseguiu executar
-                o contador JavaScript.
-            </p>
-
-            <p>
-                O teste foi concluído com sucesso. 💙
-            </p>
-
-        </div>
-
-    </main>
-
-
-    <!-- =====================================================
-         ELEMENTOS QUE O SCRIPT ORIGINAL PROCURA
-         Não precisam funcionar neste teste.
-    ====================================================== -->
-
-    <section id="inicio" style="display:none;"></section>
-
-    <section id="historia" style="display:none;">
-
-        <div class="cartoes-historia"></div>
-
-    </section>
-
-
-    <section id="galeria" style="display:none;"></section>
-
-    <section id="sobre-ela" style="display:none;"></section>
-
-    <section id="carta" style="display:none;"></section>
-
-    <section id="aniversario" style="display:none;"></section>
-
-    <footer style="display:none;"></footer>
-
-
-    <!-- =====================================================
-         BOTÃO DE TESTE
-    ====================================================== -->
-
-    <div id="revelarSurpresa" style="display:none;">
-        <button id="btnRevelarSurpresa">
-            Revelar teste
-        </button>
-    </div>
-
-
-    <!-- =====================================================
-         DIAGNÓSTICO
-    ====================================================== -->
-
-    <div id="diagnostico">
-
-        <h3>Diagnóstico</h3>
-
-        <p id="statusJS">
-            A carregar JavaScript...
-        </p>
-
-        <p id="statusContador">
-            A verificar contador...
+        <p id="estadoContador">
+            A preparar o contador...
         </p>
 
     </div>
 
+    <div class="diagnostico">
 
-    <!-- =====================================================
-         JAVASCRIPT REAL DA SURPRESA
-    ====================================================== -->
+        <h2>📋 Diagnóstico</h2>
+
+        <div id="testeJS" class="teste">
+            ⏳ JavaScript: a testar...
+        </div>
+
+        <div id="testeDate" class="teste">
+            ⏳ Date.now(): a testar...
+        </div>
+
+        <div id="testeInterval" class="teste">
+            ⏳ setInterval(): a testar...
+        </div>
+
+        <div id="testeTexto" class="teste">
+            ⏳ Atualização do texto: a testar...
+        </div>
+
+        <div id="testeContador" class="teste">
+            ⏳ Contador: a testar...
+        </div>
+
+        <div id="testeResultado" class="teste">
+            ⏳ Resultado final: a testar...
+        </div>
+
+    </div>
+
+    <div id="resultadoFinal">
+
+        <h2>🎉 Teste concluído!</h2>
+
+        <p>
+            O dispositivo conseguiu executar
+            corretamente o contador JavaScript.
+        </p>
+
+        <p>
+            Se estás a ver esta mensagem,
+            o mecanismo básico do contador
+            está a funcionar.
+        </p>
+
+    </div>
+
+    <!-- IMPORTANTE:
+         O JavaScript é carregado no final do BODY.
+         Isto permite que todos os elementos HTML
+         existam antes do script começar.
+    -->
 
     <script src="script.js"></script>
-
-
-    <!-- =====================================================
-         DIAGNÓSTICO EXTRA
-    ====================================================== -->
-
-    <script>
-
-        const statusJS =
-            document.querySelector("#statusJS");
-
-        const statusContador =
-            document.querySelector("#statusContador");
-
-
-        if (statusJS) {
-
-            statusJS.textContent =
-                "JavaScript carregado.";
-
-        }
-
-
-        setTimeout(function () {
-
-            const segundos =
-                document.querySelector("#segundos");
-
-            if (!segundos) {
-
-                if (statusContador) {
-
-                    statusContador.textContent =
-                        "ERRO: elemento do contador não encontrado.";
-
-                }
-
-                return;
-
-            }
-
-
-            if (
-                segundos.textContent === "00"
-            ) {
-
-                if (statusContador) {
-
-                    statusContador.textContent =
-                        "⚠️ O contador continua em 00.";
-
-                }
-
-            } else {
-
-                if (statusContador) {
-
-                    statusContador.textContent =
-                        "✅ O contador está a funcionar.";
-
-                }
-
-            }
-
-        }, 1500);
-
-
-        window.addEventListener(
-            "error",
-            function (evento) {
-
-                if (statusJS) {
-
-                    statusJS.textContent =
-                        "❌ ERRO NO JAVASCRIPT: " +
-                        evento.message;
-
-                }
-
-            }
-        );
-
-
-        window.addEventListener(
-            "unhandledrejection",
-            function () {
-
-                if (statusJS) {
-
-                    statusJS.textContent =
-                        "❌ ERRO: promessa JavaScript rejeitada.";
-
-                }
-
-            }
-        );
-
-    </script>
 
 </body>
 </html>
